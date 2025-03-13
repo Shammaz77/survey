@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Malayalam:wght@100..900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	background-color: #ffffff !important;
+	font-family: "Montserrat", sans-serif !important;
+}
+.container-main{
+	width: 80%;
+	margin: auto;
+}
+.navbar-main{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color:#1d499e ;
+}
+.navbar-main i{
+	color: #fff;
+	font-size: 35px;
+}
+.logo-main{
+	width: 190px;
+}
+.main-section-nav{
+	background-color:#1d499e ;
+	padding: 25px 0px;
+	position: relative;
+	z-index: 20;
+}
+.welcome-text{
+	color: #1d499e;
+	font-weight: 600;
+}
+.title-dv{
+	width: 100%;
+}
+.box{
+    position: absolute;
+    top: 50%;
+		left: 10%;
+		z-index: 10;
+		width: max-content;
+}
+.banner{
+	height: 87vh;
+	width: 100% !important;
+	object-fit: cover;
+}
+.bold-text{
+	font-weight: 400;
+	color: #1d499e;
+}
+.btn-test{
+	background-color: #1d499e !important;
+	color: #fff !important;
+	padding: 15px 25px !important;
+	border-radius: 25px !important;
+}
+.questions{
+	width: 600px;
+	margin: auto;
+	display: table;
+	padding: 25px 20px;
+	background-color: #1d499e !important;
+	margin-top: 60px;
+	border-radius: 10px;
+}
+.font-question{
+	color: #fff;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 19px;
+	font-family: "Noto Serif Malayalam", serif !important;
+}
+.img-test{
+	width: 60%;
+	margin: auto;
+	display: table;
+	background-color: #fff;
+	border-radius: 10px;
+	margin-bottom: 25px;
+}
+.buttons-main{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.next-btn{
+	background-color: #eeeeee !important;
+	color: #1d499e !important;
+	padding: 9px 15px !important;
+	width: max-content;
+	margin: auto;
+	display: table !important;
+	margin-bottom: 25px !important;
+}
+
+
+
+
+
+.numeric-options {
+	max-width: 300px;
+	margin: 20px auto;
+}
+
+.number-btn {
+	width: 40px;
+	height: 40px;
+	margin: 5px;
+	font-size: 17px !important;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn-primary {
+	background-color: #d3d3d3 !important;
+	color: white;
+}
+
+.btn-outline-primary {
+	color: #ffffff !important;
+	border-color: #ffffff !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

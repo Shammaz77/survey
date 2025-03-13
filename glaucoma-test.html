@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+		integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+	<style>
+		.question-container {
+			display: none;
+		}
+
+		.question-container.active {
+			display: block;
+		}
+
+		.buttons-main {
+			display: flex;
+			gap: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="home-page">
+		<div class="main-section-nav">
+			<div class="container-main">
+				<div class="navbar-main">
+					<img src="./images/image 9 (1).png" class="logo-main" alt="">
+					<i class="ri-menu-3-line"></i>
+				</div>
+			</div>
+		</div>
+		<div class="container-main">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="questions">
+					<!-- Question 1 -->
+<div class="question-container active" id="question1">
+	<p class="font-question">1. ഏത് നമ്പർ ആണ് നിങ്ങൾ കാണുന്നത്</p>
+	<img src="./images/testone.png" class="img-test" alt="">
+	
+	<div class="numeric-options">
+			<div class="row mb-3">
+					<div class="col">
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 0)">0</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 1)">1</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 2)">2</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 3)">3</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 4)">4</button>
+					</div>
+			</div>
+			<div class="row">
+					<div class="col">
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 5)">5</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 6)">6</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 7)">7</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 8)">8</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(1, 9)">9</button>
+					</div>
+			</div>
+	</div>
+</div>
+
+<!-- Question 2 -->
+<div class="question-container" id="question2">
+	<p class="font-question">2. ഏത് അക്ഷരമാണ് നിങ്ങൾ കാണുന്നത് ?</p>
+	<img src="./images/letter.png" class="img-test" alt="">
+	
+	<div class="numeric-options">
+			<div class="row mb-3">
+					<div class="col">
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 0)">M</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 1)">V</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 2)">X</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 3)">Y</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 4)">W</button>
+					</div>
+			</div>
+			<div class="row">
+					<div class="col">
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 5)">N</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 6)">U</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 7)">I</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 8)">H</button>
+							<button class="btn btn-outline-primary number-btn" onclick="selectOption(2, 9)">Z</button>
+					</div>
+			</div>
+	</div>
+</div>
+
+						<!-- Question 3 -->
+						<div class="question-container" id="question3">
+							<p class="font-question">3. നിങ്ങളുടെ ദൈനംദിന ജീവിതത്തിൽ വസ്തുക്കൾക്ക് ചുറ്റും നിറങ്ങൾ കാണുന്നത്
+								അനുഭവപ്പെടാറുണ്ടോ ?</p>
+							<div class="buttons-main">
+								<button class="btn next-btn" onclick="showNextQuestion(3)">ഉണ്ട്</button>
+								<button class="btn next-btn" onclick="showNextQuestion(3)">ഇല്ല</button>
+							</div>
+						</div>
+
+						<!-- Question 4 -->
+						<div class="question-container" id="question4">
+							<p class="font-question">4. വാഹനം ഓടിക്കുമ്പോഴോ നടക്കുമ്പോഴോ സൈഡ് വശം കാണാൻ നിങ്ങൾക്കു പലപ്പോഴും
+								ബുദ്ധിമുട്ടുണ്ടോ ?</p>
+							<div class="buttons-main">
+								<button class="btn next-btn" onclick="showNextQuestion(4)">ഉണ്ട്</button>
+								<button class="btn next-btn" onclick="showNextQuestion(4)">ഇല്ല</button>
+							</div>
+						</div>
+
+						<!-- Question 5 -->
+						<div class="question-container" id="question5">
+							<p class="font-question">5. നിങ്ങളുടെ നേരായേ കാഴ്ചയെ അസ്വസ്ഥമാക്കുന്ന കറുത്ത പാടുകൾ അനുഭവപ്പെടുന്നുണ്ടോ ?
+							</p>
+							<div class="buttons-main">
+								<button class="btn next-btn" onclick="showResults()">ഉണ്ട്</button>
+								<button class="btn next-btn" onclick="showResults()">ഇല്ല</button>
+							</div>
+						</div>
+
+						<!-- Results -->
+						<div class="question-container" id="results">
+							<h3>Test Completed</h3>
+							<p>Thank you for completing the test.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+
+// Store user responses
+const userResponses = {};
+
+// Function to handle option selection
+function selectOption(questionNumber, option) {
+    // Store the selected option
+    userResponses[`question${questionNumber}`] = option;
+    
+    // Add a brief delay before navigating to the next question (for better UX)
+    setTimeout(() => {
+        // Navigate to the next question
+        showNextQuestion(questionNumber);
+    }, 500); // 500ms delay gives user visual feedback that their selection was registered
+}
+
+// Function to show the next question
+function showNextQuestion(currentQuestionNumber) {
+    // Hide current question
+    document.getElementById('question' + currentQuestionNumber).classList.remove('active');
+    
+    // Show next question
+    const nextQuestionNumber = currentQuestionNumber + 1;
+    document.getElementById('question' + nextQuestionNumber).classList.add('active');
+}
+
+
+
+		
+		// Function to show results at the end
+		function showResults() {
+			// Hide last question
+			document.getElementById('question5').classList.remove('active');
+
+			// Show results
+			document.getElementById('results').classList.add('active');
+		}
+	</script>
+</body>
+
+</html>
