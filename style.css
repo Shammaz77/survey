@@ -101,10 +101,31 @@ body{
 	display: table !important;
 	margin-bottom: 25px !important;
 }
+.results{
+	font-family: "Noto Serif Malayalam", serif !important;
+	color: #fff;
+	padding-bottom: 20px;
+	text-align: center;
+}
 
-
-
-
+.question-container i{
+	color: #ebbc3d !important;
+	text-align: center;
+	font-size: 34px;
+	width: max-content;
+	margin: auto;
+	display: table;
+	padding-bottom: 25px;
+}
+.question-container .ri-check-double-line{
+	color: #7fe76a !important;
+	text-align: center;
+	font-size: 34px;
+	width: max-content;
+	margin: auto;
+	display: table;
+	padding-bottom: 25px;
+}
 
 .numeric-options {
 	max-width: 300px;
@@ -131,14 +152,41 @@ body{
 	color: #ffffff !important;
 	border-color: #ffffff !important;
 }
+.contact-form label{
+	color: #fff;
+}
+.contact-form h4{
+	text-align: center;
+	color: #fff;
+}
+.btn-submit{
+	background-color: #bae3f3 !important;
+	width: max-content;
+	margin: auto !important;
+	display: table !important;
+}
+.bottom-space{
+	padding-bottom: 30px;
+}
 
 
 
-
-
-
-
-
+@media (max-width:650px) {
+	.box {
+    width: -webkit-fill-available;
+	}
+	.banner {
+    object-position: 56%;
+	}
+	.container-main {
+    width: 84%;
+	}
+	.questions {
+    width: 100%;
+    padding: 25px 20px;
+    margin-top: 90px;
+	}
+}
 
 
 
