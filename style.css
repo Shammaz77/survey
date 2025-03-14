@@ -52,14 +52,15 @@ body{
 	width: 100% !important;
 	object-fit: cover;
 }
-.bold-text{
+.bold-text {
 	font-weight: 400;
 	color: #1d499e;
+	text-transform: lowercase;
 }
-.btn-test{
+.btn-test {
 	background-color: #1d499e !important;
 	color: #fff !important;
-	padding: 15px 25px !important;
+	padding: 11px 19px !important;
 	border-radius: 25px !important;
 }
 .questions{
@@ -193,8 +194,8 @@ body{
 
 @media (max-width:650px) {
 	.box {
-    width: -webkit-fill-available;
-	}
+		width: 88%;
+}
 	.banner {
     object-position: 56%;
 	}
