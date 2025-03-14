@@ -156,8 +156,8 @@
 						<div class="question-container" id="results-warning">
 							<div class="results-content" id="results-content-warning">
 								<i class="ri-error-warning-line"></i>
-								<h3 class="results">ഗ്ലുക്കോമയുടെ പ്രാരംഭ ലക്ഷണങ്ങൾ ഈ സ്ക്രീനിംഗ് ഉപകാരണത്തിലൂടെ കാണപ്പെടുന്നു </h3>
-								<p class="results">ശെരിയായ ചികിത്സയോടെ നിങ്ങളുടെ വിലയേറിയ കാഴ്ച കൂടുതൽ വഷളാകുന്നത് തടയാൻ സഹായിക്കും .
+								<h3 class="results">ഗ്ലുക്കോമയുടെ പ്രാരംഭ ലക്ഷണങ്ങൾ താങ്കൾക്ക് കാണപ്പെടുന്നു </h3>
+								<p class="results">ഏത്രയും പെട്ടെന്ന് ഞങ്ങളുടെ ആശുപത്രിയിൽ എത്തി ചികിത്സ തേടുക. പ്രഥമ ചികിത്സാ നടപടികൾ സമയബന്ധിതമായി സ്വീകരിക്കുന്നത് ദീര്‍ഘകാല ദൃഷ്ടിനാശം ഒഴിവാക്കാൻ സഹായിക്കും. നിങ്ങളുടെ കണ്ണുകളുടെ സംരക്ഷണം, നിങ്ങളുടെ ഭാവിയുടെ സംരക്ഷണമാണ്! 👁️
 								</p>
 
 								<div class="buttons-main mb-4">
@@ -317,69 +317,50 @@
 		// Store user responses
 		const userResponses = {};
 
-		// Show contact form buttons
-		document.getElementById('show-form-warning').addEventListener('click', function () {
-			document.getElementById('results-content-warning').classList.add('hide');
-			document.getElementById('contactForm-warning').classList.add('show');
-		});
+// Modify only the event listener for the warning result case
+document.getElementById('show-form-warning').addEventListener('click', function () {
+    document.getElementById('results-content-warning').classList.add('hide');
+    // Skip showing the form and directly show the thank-you section
+    document.getElementById('thank-you-warning').classList.add('show');
+});
 
-		document.getElementById('show-form-ok').addEventListener('click', function () {
-			document.getElementById('results-content-ok').classList.add('hide');
-			document.getElementById('contactForm-ok').classList.add('show');
-		});
+// Keep the original behavior for the OK result case
+document.getElementById('show-form-ok').addEventListener('click', function () {
+    document.getElementById('results-content-ok').classList.add('hide');
+    // Show the contact form as originally intended
+    document.getElementById('contactForm-ok').classList.add('show');
+});
 
-		// Form submission handlers
-		document.addEventListener('DOMContentLoaded', function () {
-			const warningForm = document.getElementById('userInfoForm-warning');
-			const okForm = document.getElementById('userInfoForm-ok');
+// Add the form submit handler for the OK form
+document.addEventListener('DOMContentLoaded', function () {
+    const okForm = document.getElementById('userInfoForm-ok');
+    
+    if (okForm) {
+        okForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-			if (warningForm) {
-				warningForm.addEventListener('submit', function (event) {
-					event.preventDefault();
+            // Get form data
+            const formData = {
+                name: document.getElementById('name-ok').value,
+                age: document.getElementById('age-ok').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                phone: document.getElementById('phone-ok').value
+            };
 
-					// Get form data
-					const formData = {
-						name: document.getElementById('name-warning').value,
-						age: document.getElementById('age-warning').value,
-						phone: document.getElementById('phone-warning').value
-					};
+            // You can send this data to your server using fetch or AJAX
+            console.log('OK form data:', formData);
 
-					// You can send this data to your server using fetch or AJAX
-					console.log('Warning form data:', formData);
+            // Hide the form and show thank you message
+            document.getElementById('contactForm-ok').classList.remove('show');
+            document.getElementById('thank-you-ok').classList.add('show');
 
-					// Hide the form and show thank you message
-					document.getElementById('contactForm-warning').classList.remove('show');
-					document.getElementById('thank-you-warning').classList.add('show');
+            // Reset the form
+            okForm.reset();
+        });
+    }
+});
 
-					// Reset the form
-					warningForm.reset();
-				});
-			}
-
-			if (okForm) {
-				okForm.addEventListener('submit', function (event) {
-					event.preventDefault();
-
-					// Get form data (including gender for ok form)
-					const formData = {
-						name: document.getElementById('name-ok').value,
-						age: document.getElementById('age-ok').value,
-						gender: document.querySelector('input[name="gender"]:checked').value,
-						phone: document.getElementById('phone-ok').value
-					};
-
-					// You can send this data to your server using fetch or AJAX
-					console.log('OK form data:', formData);
-
-					// Hide the form and show thank you message
-					document.getElementById('contactForm-ok').classList.remove('show');
-					document.getElementById('thank-you-ok').classList.add('show');
-
-					// Reset the form
-					okForm.reset();
-				});
-			}
-		});
+		
 
 		// Define correct answers
 		const correctAnswers = {
