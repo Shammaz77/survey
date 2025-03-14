@@ -23,6 +23,32 @@
 			display: flex;
 			gap: 10px;
 		}
+
+		.results-content {
+			display: block;
+		}
+
+		.results-content.hide {
+			display: none;
+		}
+
+		.contact-form {
+			display: none;
+		}
+
+		.contact-form.show {
+			display: block;
+		}
+
+		.thank-you {
+			display: none;
+			text-align: center;
+			padding: 20px;
+		}
+
+		.thank-you.show {
+			display: block;
+		}
 	</style>
 </head>
 
@@ -97,6 +123,7 @@
 						<div class="question-container" id="question3">
 							<p class="font-question">3. നിങ്ങളുടെ ദൈനംദിന ജീവിതത്തിൽ വസ്തുക്കൾക്ക് ചുറ്റും നിറങ്ങൾ കാണുന്നത്
 								അനുഭവപ്പെടാറുണ്ടോ ?</p>
+							<img src="./images/color.png" class="img-test" alt="">
 							<div class="buttons-main">
 								<button class="btn next-btn yes" onclick="handleYesNo(3, 'yes')">ഉണ്ട്</button>
 								<button class="btn next-btn no" onclick="handleYesNo(3, 'no')">ഇല്ല</button>
@@ -107,6 +134,7 @@
 						<div class="question-container" id="question4">
 							<p class="font-question">4. വാഹനം ഓടിക്കുമ്പോഴോ നടക്കുമ്പോഴോ സൈഡ് വശം കാണാൻ നിങ്ങൾക്കു പലപ്പോഴും
 								ബുദ്ധിമുട്ടുണ്ടോ ?</p>
+							<img src="./images/Screenshot 2025-03-14 160327.png" class="img-test" alt="">
 							<div class="buttons-main">
 								<button class="btn next-btn yes" onclick="handleYesNo(4, 'yes')">ഉണ്ട്</button>
 								<button class="btn next-btn no" onclick="handleYesNo(4, 'no')">ഇല്ല</button>
@@ -117,28 +145,37 @@
 						<div class="question-container" id="question5">
 							<p class="font-question">5. നിങ്ങളുടെ നേരായേ കാഴ്ചയെ അസ്വസ്ഥമാക്കുന്ന കറുത്ത പാടുകൾ അനുഭവപ്പെടുന്നുണ്ടോ ?
 							</p>
+							<img src="./images/Screenshot 2025-03-14 160456.png" class="img-test" alt="">
+
 							<div class="buttons-main">
 								<button class="btn next-btn yes" onclick="handleYesNo(5, 'yes')">ഉണ്ട്</button>
 								<button class="btn next-btn no" onclick="handleYesNo(5, 'no')">ഇല്ല</button>
 							</div>
 						</div>
 
-						<div class="question-container wrong" id="results-warning">
-							<i class="ri-error-warning-line"></i>
-							<h3 class="results">ഗ്ലുക്കോമയുടെ പ്രാരംഭ ലക്ഷണങ്ങൾ ഈ സ്ക്രീനിംഗ് ഉപകാരണത്തിലൂടെ കാണപ്പെടുന്നു </h3>
-							<p class="results">ശെരിയായ ചികിത്സയോടെ നിങ്ങളുടെ വിലയേറിയ കാഴ്ച കൂടുതൽ വഷളാകുന്നത് തടയാൻ സഹായിക്കും .</p>
-							
-							<div class="contact-form mt-4">
+						<div class="question-container" id="results-warning">
+							<div class="results-content" id="results-content-warning">
+								<i class="ri-error-warning-line"></i>
+								<h3 class="results">ഗ്ലുക്കോമയുടെ പ്രാരംഭ ലക്ഷണങ്ങൾ ഈ സ്ക്രീനിംഗ് ഉപകാരണത്തിലൂടെ കാണപ്പെടുന്നു </h3>
+								<p class="results">ശെരിയായ ചികിത്സയോടെ നിങ്ങളുടെ വിലയേറിയ കാഴ്ച കൂടുതൽ വഷളാകുന്നത് തടയാൻ സഹായിക്കും .
+								</p>
+
+								<div class="buttons-main mb-4">
+									<button class="btn next-btn" id="show-form-warning">അടുത്തത്</button>
+								</div>
+							</div>
+
+							<div class="contact-form" id="contactForm-warning">
 								<h4>നിങ്ങളുടെ വിവരങ്ങൾ ഷെയർ ചെയ്യുക</h4>
-								<form id="userInfoForm" class="mt-3">
+								<form id="userInfoForm-warning" class="mt-3">
 									<div class="mb-3">
-										<label for="name" class="form-label">പേര്</label>
-										<input type="text" class="form-control" id="name" name="name" required>
+										<label for="name-warning" class="form-label">പേര്</label>
+										<input type="text" class="form-control" id="name-warning" name="name" required>
 									</div>
 
 									<div class="mb-3">
-										<label for="age" class="form-label">വയസ്സ്</label>
-										<input type="number" class="form-control" id="age" name="age" min="1" max="120" required>
+										<label for="age-warning" class="form-label">വയസ്സ്</label>
+										<input type="number" class="form-control" id="age-warning" name="age" min="1" max="120" required>
 									</div>
 
 									<div class="mb-3">
@@ -152,66 +189,118 @@
 											<label class="form-check-label" for="female">സ്ത്രീ</label>
 										</div>
 										<div class="form-check">
+											<input class="form-check-input" type="radio">
+											<input class="form-check-input" type="radio" name="gender" id="other" value="other">
+											<label class="form-check-label" for="other">മറ്റുള്ളവ</label>
+										</div>
+									</div>
+
+
+
+									<div class="mb-3 bottom-space">
+										<label for="phone-warning" class="form-label">ഫോൺ നമ്പർ</label>
+										<input type="tel" class="form-control" minlength="10" id="phone-warning" name="phone"
+											pattern="[0-9]{10}" required>
+									</div>
+
+									<button type="submit" class="btn btn-submit">സമർപ്പിക്കുക</button>
+								</form>
+							</div>
+
+							<div class="thank-you" id="thank-you-warning">
+								<i class="ri-checkbox-circle-line" style="font-size: 48px; color: green;"></i>
+								<h3 class="thanx">നന്ദി!</h3>
+								<p class="thanx">നിങ്ങളുടെ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു. ഞങ്ങൾ ഉടൻ തന്നെ നിങ്ങളുമായി
+									ബന്ധപ്പെടുന്നതാണ്.</p>
+									<div class="location-box">
+										<h5><i class="ri-map-pin-line"></i> Koyilandy</h5>
+										<h5 class="number-txt">+91 7902666631</h5>
+										<h5><i class="ri-map-pin-line"></i> Balussery</h5>
+										<h5 class="number-txt">+91 9072201050</h5>
+										<h5><i class="ri-map-pin-line"></i> Thamarassery</h5>
+										<h5 class="number-txt">+91 9072314474</h5>
+										<h5><i class="ri-map-pin-line"></i> Vadakara</h5>
+										<h5 class="number-txt">+91 9447699020</h5>
+									</div>
+								</div>
+						</div>
+
+						<div class="question-container" id="results-ok">
+							<div class="results-content" id="results-content-ok">
+								<i class="ri-check-double-line"></i>
+								<h3 class="results">ഗ്ലുക്കോമയുടെ പ്രാരംഭ ലക്ഷണങ്ങൾ നിങ്ങളിൽ ഇല്ലെന്നു ഈ സ്ക്രീനിംഗ് ഉപകരണം
+									തിരിച്ചറിഞ്ഞു
+									.</h3>
+								<p class="results">എന്തിരുന്നാലും കണ്ണിന്റെ പ്രഷർ സമയ ബന്ധിതമായി നിരീക്ഷിക്കുന്നതിലൂടെ നിങ്ങളുടെ കാഴ്ച
+									സംരെക്ഷികാൻ കഴിയും .</p>
+									
+
+								<div class="buttons-main mb-4">
+									<button class="btn next-btn" id="show-form-ok">അടുത്തത്</button>
+								</div>
+							</div>
+
+							<div class="contact-form" id="contactForm-ok">
+								<h4>നിങ്ങളുടെ വിവരങ്ങൾ ഷെയർ ചെയ്യുക</h4>
+								<form id="userInfoForm-ok" class="mt-3">
+									<div class="mb-3">
+										<label for="name-ok" class="form-label">പേര്</label>
+										<input type="text" class="form-control" id="name-ok" name="name" required>
+									</div>
+
+									<div class="mb-3">
+										<label for="age-ok" class="form-label">വയസ്സ്</label>
+										<input type="number" class="form-control" id="age-ok" name="age" min="1" max="120" required>
+									</div>
+
+									<div class="mb-3">
+										<label class="form-label">ലിംഗം</label>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
+											<label class="form-check-label" for="male">പുരുഷൻ</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="gender" id="female" value="female">
+											<label class="form-check-label" for="female">സ്ത്രീ</label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio">
+
+
 											<input class="form-check-input" type="radio" name="gender" id="other" value="other">
 											<label class="form-check-label" for="other">മറ്റുള്ളവ</label>
 										</div>
 									</div>
 
 									<div class="mb-3 bottom-space">
-										<label for="phone" class="form-label">ഫോൺ നമ്പർ</label>
-										<input type="tel" class="form-control" minlength="10" id="phone" name="phone" pattern="[0-9]{10}"
+										<label for="phone-ok" class="form-label">ഫോൺ നമ്പർ</label>
+										<input type="tel" class="form-control" minlength="10" id="phone-ok" name="phone" pattern="[0-9]{10}"
 											required>
 									</div>
 
 									<button type="submit" class="btn btn-submit">സമർപ്പിക്കുക</button>
 								</form>
 							</div>
-							
-						</div>
-						<div class="question-container correct" id="results-ok">
-							<i class="ri-check-double-line"></i>
-							<h3 class="results">ഗ്ലുക്കോമയുടെ പ്രാരംഭ ലക്ഷണങ്ങൾ നിങ്ങളിൽ ഇല്ലെന്നു ഈ സ്ക്രീനിംഗ് ഉപകരണം തിരിച്ചറിഞ്ഞു
-								.</h3>
-							<p class="results">എന്തിരുന്നാലും കണ്ണിന്റെ പ്രഷർ സമയ ബന്ധിതമായി നിരീക്ഷിക്കുന്നതിലൂടെ നിങ്ങളുടെ കാഴ്ച
-								സംരെക്ഷികാൻ കഴിയും .</p>
 
-							<div class="contact-form mt-4">
-								<h4>നിങ്ങളുടെ വിവരങ്ങൾ ഷെയർ ചെയ്യുക</h4>
-								<form id="userInfoForm" class="mt-3">
-									<div class="mb-3">
-										<label for="name" class="form-label">പേര്</label>
-										<input type="text" class="form-control" id="name" name="name" required>
+							<div class="thank-you" id="thank-you-ok">
+								<i class="ri-checkbox-circle-line" style="font-size: 48px; color: green;"></i>
+								<h3 class="thanx">നന്ദി!</h3>
+								<p class="thanx">നിങ്ങളുടെ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു. ഞങ്ങൾ ഉടൻ തന്നെ നിങ്ങളുമായി
+									ബന്ധപ്പെടുന്നതാണ്.</p>	
+
+									<div class="location-box">
+										<h5><i class="ri-map-pin-line"></i> Koyilandy</h5>
+										<h5 class="number-txt">+91 7902666631</h5>
+										<h5><i class="ri-map-pin-line"></i> Balussery</h5>
+										<h5 class="number-txt">+91 9072201050</h5>
+										<h5><i class="ri-map-pin-line"></i> Thamarassery</h5>
+										<h5 class="number-txt">+91 9072314474</h5>
+										<h5><i class="ri-map-pin-line"></i> Vadakara</h5>
+										<h5 class="number-txt">+91 9447699020</h5>
 									</div>
 
-									<div class="mb-3">
-										<label for="age" class="form-label">വയസ്സ്</label>
-										<input type="number" class="form-control" id="age" name="age" min="1" max="120" required>
-									</div>
 
-									<div class="mb-3">
-										<label class="form-label">ലിംഗം</label>
-										<div class="form-check">
-											<input class="form-check-input" type="radio" name="gender" id="male" value="male" required>
-											<label class="form-check-label" for="male">പുരുഷൻ</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio" name="gender" id="female" value="female">
-											<label class="form-check-label" for="female">സ്ത്രീ</label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio" name="gender" id="other" value="other">
-											<label class="form-check-label" for="other">മറ്റുള്ളവ</label>
-										</div>
-									</div>
 
-									<div class="mb-3 bottom-space">
-										<label for="phone" class="form-label">ഫോൺ നമ്പർ</label>
-										<input type="tel" class="form-control" minlength="10" id="phone" name="phone" pattern="[0-9]{10}"
-											required>
-									</div>
-
-									<button type="submit" class="btn btn-submit">സമർപ്പിക്കുക</button>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -228,34 +317,69 @@
 		// Store user responses
 		const userResponses = {};
 
-		// Form submission handler
-		document.addEventListener('DOMContentLoaded', function () {
-			const userInfoForm = document.getElementById('userInfoForm');
+		// Show contact form buttons
+		document.getElementById('show-form-warning').addEventListener('click', function () {
+			document.getElementById('results-content-warning').classList.add('hide');
+			document.getElementById('contactForm-warning').classList.add('show');
+		});
 
-			if (userInfoForm) {
-				userInfoForm.addEventListener('submit', function (event) {
+		document.getElementById('show-form-ok').addEventListener('click', function () {
+			document.getElementById('results-content-ok').classList.add('hide');
+			document.getElementById('contactForm-ok').classList.add('show');
+		});
+
+		// Form submission handlers
+		document.addEventListener('DOMContentLoaded', function () {
+			const warningForm = document.getElementById('userInfoForm-warning');
+			const okForm = document.getElementById('userInfoForm-ok');
+
+			if (warningForm) {
+				warningForm.addEventListener('submit', function (event) {
 					event.preventDefault();
 
 					// Get form data
 					const formData = {
-						name: document.getElementById('name').value,
-						age: document.getElementById('age').value,
-						gender: document.querySelector('input[name="gender"]:checked').value,
-						phone: document.getElementById('phone').value
+						name: document.getElementById('name-warning').value,
+						age: document.getElementById('age-warning').value,
+						phone: document.getElementById('phone-warning').value
 					};
 
 					// You can send this data to your server using fetch or AJAX
-					console.log('Form data:', formData);
+					console.log('Warning form data:', formData);
 
-					// Display submission confirmation
-					alert('നിങ്ങളുടെ വിവരങ്ങൾ വിജയകരമായി സമർപ്പിച്ചു!');
+					// Hide the form and show thank you message
+					document.getElementById('contactForm-warning').classList.remove('show');
+					document.getElementById('thank-you-warning').classList.add('show');
 
-					// Optionally reset the form
-					userInfoForm.reset();
+					// Reset the form
+					warningForm.reset();
+				});
+			}
+
+			if (okForm) {
+				okForm.addEventListener('submit', function (event) {
+					event.preventDefault();
+
+					// Get form data (including gender for ok form)
+					const formData = {
+						name: document.getElementById('name-ok').value,
+						age: document.getElementById('age-ok').value,
+						gender: document.querySelector('input[name="gender"]:checked').value,
+						phone: document.getElementById('phone-ok').value
+					};
+
+					// You can send this data to your server using fetch or AJAX
+					console.log('OK form data:', formData);
+
+					// Hide the form and show thank you message
+					document.getElementById('contactForm-ok').classList.remove('show');
+					document.getElementById('thank-you-ok').classList.add('show');
+
+					// Reset the form
+					okForm.reset();
 				});
 			}
 		});
-
 
 		// Define correct answers
 		const correctAnswers = {

@@ -109,7 +109,7 @@ body{
 }
 
 .question-container i{
-	color: #ebbc3d !important;
+	color: #ddffa7 !important;
 	text-align: center;
 	font-size: 34px;
 	width: max-content;
@@ -131,7 +131,9 @@ body{
 	max-width: 300px;
 	margin: 20px auto;
 }
-
+.thanx{
+	color: #fff;
+}
 .number-btn {
 	width: 40px;
 	height: 40px;
@@ -169,6 +171,24 @@ body{
 	padding-bottom: 30px;
 }
 
+.results-content {
+    display: block;
+}
+
+.results-content.hide {
+    display: none;
+}
+.location-box{
+	color: #fff;
+}
+
+.location-box i{
+	color: #fff !important;
+	padding-bottom: 6px !important;
+}
+.number-txt{
+	padding-bottom: 10px;
+}
 
 
 @media (max-width:650px) {
@@ -186,6 +206,9 @@ body{
     padding: 25px 20px;
     margin-top: 90px;
 	}
+	.thank-you {
+    padding: 0px !important;
+}	
 }
 
 
