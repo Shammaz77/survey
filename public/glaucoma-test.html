@@ -312,26 +312,26 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script>
-		// Store user responses
-		const userResponses = {};
+	// Store user responses
+const userResponses = {};
 
-// Modify only the event listener for the warning result case
+// Modify the event listener for the warning result case
 document.getElementById('show-form-warning').addEventListener('click', function () {
     document.getElementById('results-content-warning').classList.add('hide');
-    // Skip showing the form and directly show the thank-you section
-    document.getElementById('thank-you-warning').classList.add('show');
+    // Show the contact form instead of skipping to thank-you
+    document.getElementById('contactForm-warning').classList.add('show');
 });
 
 // Keep the original behavior for the OK result case
 document.getElementById('show-form-ok').addEventListener('click', function () {
     document.getElementById('results-content-ok').classList.add('hide');
-    // Show the contact form as originally intended
     document.getElementById('contactForm-ok').classList.add('show');
 });
 
-// Add the form submit handler for the OK form
+// Add form submit handlers for both forms
 document.addEventListener('DOMContentLoaded', function () {
     const okForm = document.getElementById('userInfoForm-ok');
+    const warningForm = document.getElementById('userInfoForm-warning');
     
     if (okForm) {
         okForm.addEventListener('submit', function (event) {
@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const formData = {
                 name: document.getElementById('name-ok').value,
                 age: document.getElementById('age-ok').value,
-                gender: document.querySelector('input[name="gender"]:checked').value,
+                gender: document.querySelector('input[name="gender"]:checked')?.value,
                 phone: document.getElementById('phone-ok').value
             };
 
@@ -356,77 +356,99 @@ document.addEventListener('DOMContentLoaded', function () {
             okForm.reset();
         });
     }
+    
+    if (warningForm) {
+        warningForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name-warning').value,
+                age: document.getElementById('age-warning').value,
+                gender: document.querySelector('#userInfoForm-warning input[name="gender"]:checked')?.value,
+                phone: document.getElementById('phone-warning').value
+            };
+
+            // You can send this data to your server using fetch or AJAX
+            console.log('Warning form data:', formData);
+
+            // Hide the form and show thank you message
+            document.getElementById('contactForm-warning').classList.remove('show');
+            document.getElementById('thank-you-warning').classList.add('show');
+
+            // Reset the form
+            warningForm.reset();
+        });
+    }
 });
 
-		
+// Define correct answers
+const correctAnswers = {
+    question1: 7,  // Correct answer for question 1 is 7
+    question2: 5   // Correct answer for question 2 is N (option 5)
+};
 
-		// Define correct answers
-		const correctAnswers = {
-			question1: 7,  // Correct answer for question 1 is 7
-			question2: 5   // Correct answer for question 2 is N (option 5)
-		};
+// Function to handle option selection for questions 1-2
+function selectOption(questionNumber, option) {
+    // Store the selected option
+    userResponses[`question${questionNumber}`] = option;
 
-		// Function to handle option selection for questions 1-2
-		function selectOption(questionNumber, option) {
-			// Store the selected option
-			userResponses[`question${questionNumber}`] = option;
+    // Add a brief delay before navigating to the next question (for better UX)
+    setTimeout(() => {
+        // Navigate to the next question
+        showNextQuestion(questionNumber);
+    }, 500); // 500ms delay gives user visual feedback that their selection was registered
+}
 
-			// Add a brief delay before navigating to the next question (for better UX)
-			setTimeout(() => {
-				// Navigate to the next question
-				showNextQuestion(questionNumber);
-			}, 500); // 500ms delay gives user visual feedback that their selection was registered
-		}
+// Function to handle yes/no responses for questions 3-5
+function handleYesNo(questionNumber, answer) {
+    // Store the answer (yes or no)
+    userResponses[`question${questionNumber}`] = answer;
 
-		// Function to handle yes/no responses for questions 3-5
-		function handleYesNo(questionNumber, answer) {
-			// Store the answer (yes or no)
-			userResponses[`question${questionNumber}`] = answer;
+    if (questionNumber < 5) {
+        // Navigate to the next question
+        showNextQuestion(questionNumber);
+    } else {
+        // Show results after question 5
+        showResults();
+    }
+}
 
-			if (questionNumber < 5) {
-				// Navigate to the next question
-				showNextQuestion(questionNumber);
-			} else {
-				// Show results after question 5
-				showResults();
-			}
-		}
+// Function to show the next question
+function showNextQuestion(currentQuestionNumber) {
+    // Hide current question
+    document.getElementById('question' + currentQuestionNumber).classList.remove('active');
 
-		// Function to show the next question
-		function showNextQuestion(currentQuestionNumber) {
-			// Hide current question
-			document.getElementById('question' + currentQuestionNumber).classList.remove('active');
+    // Show next question
+    const nextQuestionNumber = currentQuestionNumber + 1;
+    document.getElementById('question' + nextQuestionNumber).classList.add('active');
+}
 
-			// Show next question
-			const nextQuestionNumber = currentQuestionNumber + 1;
-			document.getElementById('question' + nextQuestionNumber).classList.add('active');
-		}
+// Function to show results at the end
+function showResults() {
+    // Hide last question
+    document.getElementById('question5').classList.remove('active');
 
-		// Function to show results at the end
-		function showResults() {
-			// Hide last question
-			document.getElementById('question5').classList.remove('active');
+    // Check if any visual test answers are incorrect
+    const visualTestIncorrect =
+        userResponses.question1 !== correctAnswers.question1 ||
+        userResponses.question2 !== correctAnswers.question2;
 
-			// Check if any visual test answers are incorrect
-			const visualTestIncorrect =
-				userResponses.question1 !== correctAnswers.question1 ||
-				userResponses.question2 !== correctAnswers.question2;
+    // Check if any of questions 3, 4, or 5 have a "yes" answer
+    const hasYesAnswer =
+        userResponses.question3 === 'yes' ||
+        userResponses.question4 === 'yes' ||
+        userResponses.question5 === 'yes';
 
-			// Check if any of questions 3, 4, or 5 have a "yes" answer
-			const hasYesAnswer =
-				userResponses.question3 === 'yes' ||
-				userResponses.question4 === 'yes' ||
-				userResponses.question5 === 'yes';
-
-			// Show warning result if either condition is true
-			if (visualTestIncorrect || hasYesAnswer) {
-				// Show result for incorrect visual test or at least one "yes" symptom
-				document.getElementById('results-warning').classList.add('active');
-			} else {
-				// Show positive result only if all tests are correct and all symptoms are "no"
-				document.getElementById('results-ok').classList.add('active');
-			}
-		}
+    // Show warning result if either condition is true
+    if (visualTestIncorrect || hasYesAnswer) {
+        // Show result for incorrect visual test or at least one "yes" symptom
+        document.getElementById('results-warning').classList.add('active');
+    } else {
+        // Show positive result only if all tests are correct and all symptoms are "no"
+        document.getElementById('results-ok').classList.add('active');
+    }
+}
 	</script>
 </body>
 
